@@ -1,0 +1,53 @@
+#!/bin/bash 
+
+SELENIUM_LIB="/opt/selenium/selenium-server-standalone.jar" 
+SELENIUM_PORT=4444 
+SELENIUM_LOGDIR="/var/log/selenium" 
+SELENIUM_PID="/var/run/selenium.pid" 
+
+case "${1:-''}" in 
+    'start') 
+        if test -f ${SELENIUM_PID}; then 
+            echo "Selenium is already running." 
+        else 
+            java -jar ${SELENIUM_LIB} -port ${SELENIUM_PORT} > ${SELENIUM_LOGDIR}/selenium-output.log 2> ${SELENIUM_LOGDIR}/selenium-error.log & echo $! > ${SELENIUM_PID} 
+            echo "Starting Selenium..." 
+            error=$? 
+            if test $error -gt 0 
+            then 
+                echo "Error $error! Couldn't start Selenium!" 
+            fi 
+        fi 
+    ;; 
+    'stop') 
+        if test -f ${SELENIUM_PID}; then 
+            echo "Stopping Selenium..." 
+            PID=$(cat ${SELENIUM_PID})
+            kill -3 $PID 
+            if kill -9 $PID; then 
+              sleep 2 
+              test -f ${SELENIUM_PID} && rm -f ${SELENIUM_PID} 
+             else 
+               echo "Selenium could not be stopped..." 
+             fi 
+        else 
+            echo "Selenium is not running." 
+        fi 
+        ;; 
+    'restart') 
+        if test -f ${SELENIUM_PID} 
+        then 
+            kill -HUP $(cat ${SELENIUM_PID}) 
+            test -f ${SELENIUM_PID} && rm -f ${SELENIUM_PID} 
+            sleep 1 
+            java -jar ${SELENIUM_LIB} -port ${SELENIUM_PORT} > ${SELENIUM_LOGDIR}/selenium-output.log 2> ${SELENIUM_LOGDIR}/selenium-error.log & echo $! > ${SELENIUM_PID} 
+            echo "Reload Selenium..." 
+        else 
+            echo "Selenium isn't running..." 
+        fi 
+        ;; 
+    *)    # no parameter specified 
+        echo "Usage: ${SELF} start|stop|restart|reload|force-reload|status" 
+        exit 1 
+    ;; 
+esac 
