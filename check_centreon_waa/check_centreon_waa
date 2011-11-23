@@ -112,7 +112,7 @@ unless ( -d $directory ) {
 }
 
 unless ( -f "$directory/$testname.html" ) {
-    print "The test file does not exists\n\n";
+    print "The test file $directory/$testname.html does not exists\n\n";
     help(3);
 }
 
