@@ -64,6 +64,7 @@ sub version {
 # Print help and exit
 ##
 sub help {
+    my ($ret) = @_;
     print <<EOP;
 check_centeron_waa -c <critical> -w <warning> -r <remote> -t <testname> -d <directory> [-f]
 
@@ -74,6 +75,9 @@ check_centeron_waa -c <critical> -w <warning> -r <remote> -t <testname> -d <dire
 \t-d|--directory\t\tThe directory with test files
 
 EOP
+    if ($ret =~ /^\d+$/) {
+        exit $ret;
+    }
     exit 0;
 }
 # \t-f|--fulldata\t\tSend the HAR data to a remote
@@ -99,17 +103,17 @@ GetOptions(
 
 if ($critical eq 0 or $warning eq 0 or $remote eq "" or $testname eq "" or $directory eq "") {
     print "Missing arguments\n\n";
-    help();
+    help(3);
 }
 
 unless ( -d $directory ) {
     print "The directory $directory does not exists\n\n";
-    help();
+    help(3);
 }
 
 unless ( -f "$directory/$testname.html" ) {
     print "The test file does not exists\n\n";
-    help();
+    help(3);
 }
 
 #
