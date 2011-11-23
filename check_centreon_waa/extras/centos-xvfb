@@ -10,9 +10,15 @@
 # 
 # 
 
-XVFB_OUTPUT=/usr/local/labkey/Xvfb.out 
+# X number
+X_SERVER_NUMBER=":99"
+# Directory for files containing memory mapping
+FBDIR=/var/run
+
+XVFB_OUTPUT=/tmp/Xvfb.out 
+
 XVFB=/usr/bin/Xvfb 
-XVFB_OPTIONS=":2 -nolisten tcp -shmem" 
+XVFB_OPTIONS="${XVFB_OPTIONS} -nolisten tcp -fbdir ${FBDIR}" 
 
 
 # Source function library. 
