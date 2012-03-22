@@ -41,7 +41,7 @@ use XML::XPath;
 use XML::XPath::XMLParser;
 use WWW::Selenium;
 
-our $VERSION = "1.0.0";
+our $VERSION = "1.0.2";
 
 my $critical = 0;
 my $warning = 0;
@@ -162,7 +162,7 @@ foreach my $actionNode ($listActionNode->get_nodelist) {
     $step += 1;
     ($action, $filter, $value) = $listInfos->get_nodelist;
     if (trim($action->string_value) eq 'pause') {
-      sleep(trim($filter->string_value) / 1000);
+      sleep(trim($action->string_value) / 1000);
       $stepOk += 1;
     } else {
       $tmpOk = 1;
@@ -197,7 +197,8 @@ if ($status == 0) {
   $output .= "OK";
 }
 
-$output .= " - Execution time = ${end}s Test Ok ${stepOk}/${step} |'time'=${end}s;${warning};${critical}\n";
+my $availability = sprintf("%.0f", $stepOk*100/$step);
+$output .= " - Execution time = ${end}s Test Ok ${stepOk}/${step} |'time'=${end}s;${warning};${critical} 'availability'=${availability}%;;;0;100\n";
 
 print $output;
 exit $retcode;

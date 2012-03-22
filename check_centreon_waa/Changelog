@@ -1,5 +1,13 @@
 check_centreon_waa - Changelog
 
+1.0.2 - 2012/03/22
+------------------
+* Fix pause time (thank to Cédric Meschin) #2979
+* Add avalabilty rate in perfdata (thank to Olivier LI-KIANG-CHEONG) #2826
+* Normalize xvfb init script #2825
+* Add return code for missing arguments #2815
+* Print the test file name in error (thank to Olivier LI-KIANG-CHEONG) #2814
+
 1.0.1 - 2011/11/17
 ------------------
 * Fix Selenium Server init.d
