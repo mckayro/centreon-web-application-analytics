@@ -162,7 +162,14 @@ foreach my $actionNode ($listActionNode->get_nodelist) {
     $step += 1;
     ($action, $filter, $value) = $listInfos->get_nodelist;
     if (trim($action->string_value) eq 'pause') {
-      sleep(trim($action->string_value) / 1000);
+      my $sleepTime = 1000;
+      if (trim($value->string_value) =~ /^\d+$/) {
+        $sleepTime = trim($value->string_value);
+      }
+      if (trim($filter->string_value) =~ /^\d+$/) {
+        $sleepTime = trim($filter->string_value);
+      }
+      sleep($sleepTime / 1000);
       $stepOk += 1;
     } else {
       $tmpOk = 1;
