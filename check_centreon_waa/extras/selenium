@@ -47,8 +47,25 @@ case "${1:-''}" in
             echo "Selenium isn't running..." 
         fi 
         ;; 
+    'status')
+        if test -f ${SELENIUM_PID}
+        then
+            PID=$(cat ${SELENIUM_PID})
+            PID_RUNNING=$(ps -eaf | awk '{ print $2 }' | grep "^${PID}$")
+            if test -n "${PID_RUNNING}"; then
+                echo "Selecnium is running (pid ${PID})"
+                exit 0   
+            else
+                echo "Selenium isn't running..."
+                exit 3
+            fi
+        else
+            echo "Selenium isn't running..."
+            exit 3
+        fi
+        ;;
     *)    # no parameter specified 
-        echo "Usage: ${SELF} start|stop|restart|reload|force-reload|status" 
+        echo "Usage: ${SELF} start|stop|restart|status" 
         exit 1 
     ;; 
 esac 
