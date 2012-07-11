@@ -18,7 +18,7 @@ FBDIR=/var/run
 XVFB_OUTPUT=/tmp/Xvfb.out 
 
 XVFB=/usr/bin/Xvfb 
-XVFB_OPTIONS="${XVFB_OPTIONS} -nolisten tcp -fbdir ${FBDIR}" 
+XVFB_OPTIONS="${X_SERVER_NUMBER} -nolisten tcp -fbdir ${FBDIR}" 
 
 
 # Source function library. 
