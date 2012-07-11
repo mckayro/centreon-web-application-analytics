@@ -140,7 +140,7 @@ my ($remoteHost, $remotePort) = split(/:/, $remote);
 #
 my $sel = WWW::Selenium->new(
     host => $remoteHost,
-    post => $remotePort,
+    port => $remotePort,
     browser => "*firefox",
     browser_url => $baseurl
 );
