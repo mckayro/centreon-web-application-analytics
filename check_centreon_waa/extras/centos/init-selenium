@@ -1,0 +1,67 @@
+#!/bin/bash
+# chkconfig: 345 85 15
+# description: Selenium RC/Webdriver
+# it preforms the Selenium remote contral
+# Script to manage start and stopping the fedora service
+# processname: selenium
+
+if [ -z "${JAVA_BIN}" ]; then
+    JAVA_BIN=`which java`
+    if [ "$?" != "0" ]; then
+        echo "Java binary not found" >&2
+        exit 2
+    fi
+fi
+
+# Include the default user configuration if exists
+[ -r /etc/default/${PKGNAME} ] && . /etc/default/${PKGNAME}
+
+# Source function library.
+. /etc/init.d/functions
+
+RETVAL=0;
+
+start() {
+    PROFILE_FIREFOX=""
+    if [ -z "${SELENIUM_FFPROFILE}" ]; then
+        PROFILE_FIREFOX=" -firefoxProfile ${SELENIUM_FFPROFILE} "
+    fi
+    echo "Starting Selenium service"
+    daemon --user=${SELENIUM_USER} --pidfile ${PIDFILE} ${JAVA_BIN} -jar ${SELENIUM_LIB} -port ${SELENIUM_PORT} ${PROFILE_FIREFOX} >${SELENIUM_LOGDIR}/selenium.log 2>${SELENIUM_LOGDIR}/selenium_err.log
+    RETVAL=$?
+    echo
+    [ "${RETVAL}" = 0 ] && touch /var/lock/subsys/selenium
+    return ${RETVAL}
+}
+
+stop() {
+    echo "Stopping Selenium service"
+    killproc -p ${PIDFILE} selenium
+    RETVAL=$?
+    echo
+    [ "${RETVAL}" = 0 ] && rm -f /var/lock/subsys/selenium
+    return ${RETVAL}
+}
+
+restart() {
+    stop
+    start
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    status)
+        status -p ${PIDFILE} selenium
+        ;;
+    *)
+        echo "Usage: /etc/init.d/selenium {start|stop|restart|status}"
+        exit 1
+esac
