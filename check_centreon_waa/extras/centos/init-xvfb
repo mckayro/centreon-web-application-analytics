@@ -10,12 +10,11 @@
 # 
 # 
 
-# X number
-X_SERVER_NUMBER=":99"
-# Directory for files containing memory mapping
-FBDIR=/var/run
+# Include the default user configuration if exists
+[ -r /etc/default/xvfb ] && . /etc/default/xvfb
 
 XVFB_OUTPUT=/tmp/Xvfb.out 
+PIDFILE=/var/run/xvfb.pid
 
 XVFB=/usr/bin/Xvfb 
 XVFB_OPTIONS="${X_SERVER_NUMBER} -nolisten tcp -fbdir ${FBDIR}" 
@@ -27,19 +26,35 @@ XVFB_OPTIONS="${X_SERVER_NUMBER} -nolisten tcp -fbdir ${FBDIR}"
 start() { 
     echo -n "Starting : X Virtual Frame Buffer " 
     $XVFB $XVFB_OPTIONS >>$XVFB_OUTPUT 2>&1& 
+    PID=$!
     RETVAL=$? 
+    echo ${PID} > ${PIDFILE}
     echo 
     return $RETVAL 
 } 
 
 stop() { 
     echo -n "Shutting down : X Virtual Frame Buffer" 
-    echo 
-    killproc Xvfb 
+    PID=`cat ${PIDFILE}`
+    kill -TERM ${PID} &>/dev/null
+    rm -f ${PIDFILE}
     echo 
     return 0 
 } 
 
+status() {
+    if [ ! -e ${PIDFILE} ]; then
+        echo "Xvfb is not running"
+        return 1
+    fi
+    PID=`cat ${PIDFILE}`
+    PIDRUN=`ps -eaf | awk '{ print $2 }' | grep "^${PID}$"`
+    if [ -z "${PIDRUN}" ]; then
+        echo "Xvfb is not running"
+        return 1
+    fi
+    echo "Xvfb is running"
+}
 
 
 case "$1" in 
@@ -49,6 +64,13 @@ case "$1" in
   stop) 
     stop 
     ;; 
+  restart)
+    stop
+    start
+    ;;
+  status)
+    status
+    ;;
   *) 
     echo "Usage: xvfb {start|stop}" 
     exit 1 

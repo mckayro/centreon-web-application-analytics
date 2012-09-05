@@ -14,7 +14,9 @@ if [ -z "${JAVA_BIN}" ]; then
 fi
 
 # Include the default user configuration if exists
-[ -r /etc/default/${PKGNAME} ] && . /etc/default/${PKGNAME}
+[ -r /etc/default/selenium ] && . /etc/default/selenium
+
+PIDFILE=/var/run/selenium/selenium.pid
 
 # Source function library.
 . /etc/init.d/functions
@@ -23,11 +25,11 @@ RETVAL=0;
 
 start() {
     PROFILE_FIREFOX=""
-    if [ -z "${SELENIUM_FFPROFILE}" ]; then
+    if [ -n "${SELENIUM_FFPROFILE}" ]; then
         PROFILE_FIREFOX=" -firefoxProfile ${SELENIUM_FFPROFILE} "
     fi
     echo "Starting Selenium service"
-    daemon --user=${SELENIUM_USER} --pidfile ${PIDFILE} ${JAVA_BIN} -jar ${SELENIUM_LIB} -port ${SELENIUM_PORT} ${PROFILE_FIREFOX} >${SELENIUM_LOGDIR}/selenium.log 2>${SELENIUM_LOGDIR}/selenium_err.log
+    su -m ${SELENIUM_USER} -c "nohup ${JAVA_BIN} -jar ${SELENIUM_LIB} -port ${SELENIUM_PORT} ${PROFILE_FIREFOX} >${SELENIUM_LOGDIR}/selenium.log 2>${SELENIUM_LOGDIR}/selenium_err.log & echo \$! >${PIDFILE}"
     RETVAL=$?
     echo
     [ "${RETVAL}" = 0 ] && touch /var/lock/subsys/selenium
@@ -36,7 +38,9 @@ start() {
 
 stop() {
     echo "Stopping Selenium service"
-    killproc -p ${PIDFILE} selenium
+    PID=`cat ${PIDFILE}`
+    kill -TERM ${PID}
+    rm -f "${PIDFILE}"
     RETVAL=$?
     echo
     [ "${RETVAL}" = 0 ] && rm -f /var/lock/subsys/selenium
