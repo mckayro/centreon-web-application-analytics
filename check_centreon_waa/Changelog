@@ -1,5 +1,11 @@
 check_centreon_waa - Changelog
 
+1.0.3 - 2012/09/06
+------------------
+* Fix init scripts for LSB #3234, #3328, #3621
+* Fix syntax for port connection (thank Charles Judith) #3425
+* Add template firefox profile for selenium #3233
+
 1.0.2 - 2012/03/22
 ------------------
 * Fix pause time (thank to Cédric Meschin) #2979
