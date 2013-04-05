@@ -17,11 +17,17 @@ fi
 [ -r /etc/default/selenium ] && . /etc/default/selenium
 
 PIDFILE=/var/run/selenium/selenium.pid
+PKGNAME=selenium 
 
 # Source function library.
 . /etc/init.d/functions
 
 RETVAL=0;
+
+if [ -z "${RUN_AT_STARTUP}" -o "${RUN_AT_STARTUP}" != "YES" ]; then                                                                                      
+    log_warning_msg "Not starting $PKGNAME, edit /etc/default/$PKGNAME to start it."
+    exit ${RETVAL}
+fi
 
 start() {
     PROFILE_FIREFOX=""
