@@ -31,7 +31,7 @@ SCRIPTNAME=/etc/init.d/${PKGNAME}
 
 PROFILE_FIREFOX=""
 if [ -n "${SELENIUM_FFPROFILE}" ]; then
-    PROFILE_FIREFOX=" -firefoxProfile ${SELENIUM_FFPROFILE} "
+    PROFILE_FIREFOX=" -firefoxProfileTemplate ${SELENIUM_FFPROFILE} "
 fi
 DAEMON_ARGS="-jar ${SELENIUM_LIB} -port ${SELENIUM_PORT} ${PROFILE_FIREFOX} >${SELENIUM_LOGDIR}/selenium.log 2>${SELENIUM_LOGDIR}/selenium_err.log"
 

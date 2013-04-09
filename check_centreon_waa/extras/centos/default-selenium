@@ -15,7 +15,8 @@ SELENIUM_USER="selenium"
 # Selenium log dir default: /var/log/selenium
 SELENIUM_LOGDIR="/var/log/selenium"
 
-# The default firefox profile for use as template in selenium
+# The firefox profile directory for use in selenium. Run "firefox -ProfileManager" to create a new profile and custom it.
+# Example SELENIUM_FFPROFILE=/var/run/selenium/.mozilla/firefox/XXXXXX.selenium
 SELENIUM_FFPROFILE=""
 
 # X display port default: :99

@@ -32,7 +32,7 @@ fi
 start() {
     PROFILE_FIREFOX=""
     if [ -n "${SELENIUM_FFPROFILE}" ]; then
-        PROFILE_FIREFOX=" -firefoxProfile ${SELENIUM_FFPROFILE} "
+        PROFILE_FIREFOX=" -firefoxProfileTemplate ${SELENIUM_FFPROFILE} "
     fi
     echo "Starting Selenium service"
     su -m ${SELENIUM_USER} -c "nohup ${JAVA_BIN} -jar ${SELENIUM_LIB} -port ${SELENIUM_PORT} ${PROFILE_FIREFOX} >${SELENIUM_LOGDIR}/selenium.log 2>${SELENIUM_LOGDIR}/selenium_err.log & echo \$! >${PIDFILE}"
