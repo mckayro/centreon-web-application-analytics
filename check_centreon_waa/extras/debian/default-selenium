@@ -4,7 +4,7 @@
 RUN_AT_STARTUP="NO"
 
 # Path to selenium JAR
-SELENIUM_LIB=""
+SELENIUM_LIB="/opt/selenium/selenium-server-standalone.jar"
 
 # Selenium port default: 4444
 SELENIUM_PORT=4444
