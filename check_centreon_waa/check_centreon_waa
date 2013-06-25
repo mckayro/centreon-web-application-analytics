@@ -41,7 +41,7 @@ use XML::XPath;
 use XML::XPath::XMLParser;
 use WWW::Selenium;
 
-our $VERSION = "1.0.2";
+our $VERSION = "1.0.4";
 
 my $critical = 0;
 my $warning = 0;
