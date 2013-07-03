@@ -35,7 +35,7 @@ start() {
         PROFILE_FIREFOX=" -firefoxProfileTemplate ${SELENIUM_FFPROFILE} "
     fi
     echo "Starting Selenium service"
-    su -s /bin/bash - ${SELENIUM_USER} -c "DISPLAY=${X_DISPLAY} nohup ${JAVA_BIN} -jar ${SELENIUM_LIB} -port ${SELENIUM_PORT} ${PROFILE_FIREFOX} >${SELENIUM_LOGDIR}/selenium.log 2>${SELENIUM_LOGDIR}/selenium_err.log & echo \$! >${PIDFILE}"
+    su -s /bin/bash - ${SELENIUM_USER} -c "DISPLAY=${X_DISPLAY} nohup ${JAVA_BIN} -jar ${SELENIUM_LIB} -port ${SELENIUM_PORT} -browserTimeout ${SELENIUM_BROWSER_TIMEOUT} ${PROFILE_FIREFOX} >${SELENIUM_LOGDIR}/selenium.log 2>${SELENIUM_LOGDIR}/selenium_err.log & echo \$! >${PIDFILE}"
     RETVAL=$?
     echo
     [ "${RETVAL}" = 0 ] && touch /var/lock/subsys/selenium

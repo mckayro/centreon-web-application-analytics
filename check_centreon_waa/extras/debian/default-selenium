@@ -21,3 +21,6 @@ SELENIUM_FFPROFILE=""
 
 # X display port default: :99
 X_DISPLAY=":99"
+
+# The number of seconds a browser is allowed to hang
+SELENIUM_BROWSER_TIMEOUT="300"
