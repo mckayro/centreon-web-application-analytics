@@ -119,14 +119,14 @@ To activate this start options::
 
 On Debian::
 
-  # useradd -r -s /bin/false -d /var/run/selenium -m selenium
+  # useradd -r -s /bin/bash -d /var/run/selenium -m selenium
   # mkdir -p /var/log/selenium 
   # chmod a+x /etc/init.d/selenium
   # update-rc.d selenium defaults
 
 On CentOS or CES::
 
-  # useradd -r -s /bin/false -d /var/run/selenium -m selenium
+  # useradd -r -s /bin/bash -d /var/run/selenium -m selenium
   # mkdir -p /var/log/selenium 
   # chmod a+x /etc/init.d/selenium
   # chkconfig --add selenium
