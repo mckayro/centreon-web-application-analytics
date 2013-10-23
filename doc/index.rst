@@ -14,3 +14,4 @@ Contents:
    installation
    configuration
    usage
+   tips_and_ticks
