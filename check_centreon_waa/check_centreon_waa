@@ -48,6 +48,7 @@ my $warning = 0;
 my $remote = "";
 my $testname = "";
 my $directory = "";
+my $debug = 0;
 my $fulldata = 0;
 my $retcode = 3;
 my $tmpOk = 1;
@@ -66,13 +67,14 @@ sub version {
 sub help {
     my ($ret) = @_;
     print <<EOP;
-check_centeron_waa -c <critical> -w <warning> -r <remote> -t <testname> -d <directory> [-f]
+check_centeron_waa -c <critical> -w <warning> -r <remote> -t <testname> -d <directory> [-f] [-b]
 
 \t-c|--critical\t\tThe critical time
 \t-w|--warning\t\tThe warning time
 \t-r|--remote\t\tThe remote control for Selenium
 \t-t|--testname\t\tThe test name
 \t-d|--directory\t\tThe directory with test files
+\t-b|--debug\t\tThe debug
 
 EOP
     if ($ret =~ /^\d+$/) {
@@ -97,7 +99,8 @@ GetOptions(
     "w=f" => \$warning, "warning=f" => \$warning,
     "r=s" => \$remote, "remote=s" => \$remote,
     "t=s" => \$testname, "testname=s" => \$testname,
-    "d=s" => \$directory, "directory=s" => \$directory
+    "d=s" => \$directory, "directory=s" => \$directory,
+    "b" => \$debug, "debug" => \$debug
     #"f" => \$fulldata, "fulldata" => \$fulldata
 );
 
@@ -138,6 +141,9 @@ my ($remoteHost, $remotePort) = split(/:/, $remote);
 #
 # Start Selenium RC
 #
+if ($debug) {
+    print "Base URL: ".$baseurl."\n";
+}
 my $sel = WWW::Selenium->new(
     host => $remoteHost,
     port => $remotePort,
@@ -173,7 +179,14 @@ foreach my $actionNode ($listActionNode->get_nodelist) {
       $stepOk += 1;
     } else {
       $tmpOk = 1;
-      eval { $sel->do_command(trim($action->string_value), trim($filter->string_value), trim($value->string_value)) }; $tmpOk = 0 if $@;
+      if ($debug) {
+        print "Step ".$step." - ".trim($action->string_value) ." | ".trim($filter->string_value)." | ". trim($value->string_value). "\n";
+      }
+      eval { $sel->do_command(trim($action->string_value), trim($filter->string_value), trim($value->string_value)) }; 
+      if ($debug) { 
+        print $@ ."\n";
+      }
+      $tmpOk = 0 if $@;
       if (!$tmpOk) {
         $status = 0;
       } else {
