@@ -1,5 +1,12 @@
 check_centreon_waa - Changelog
 
+1.0.4 - 2014/10/20
+------------------
+* Update documentation (FR and EN)
+* Update CentOS init script with last LSB libraries
+* Use new plugin system
+* Global modifications and updates about version etc.
+
 1.0.3 - 2012/09/06
 ------------------
 * Fix init scripts for LSB #3234, #3328, #3621
