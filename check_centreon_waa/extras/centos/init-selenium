@@ -1,8 +1,8 @@
 #!/bin/bash
 # chkconfig: 345 85 15
 # description: Selenium RC/Webdriver
-# it preforms the Selenium remote control
-# Script to manage start and stopping the selenium server on CentOS/RedHat
+# it preforms the Selenium remote contral
+# Script to manage start and stopping the fedora service
 # processname: selenium
 
 if [ -z "${JAVA_BIN}" ]; then
@@ -16,126 +16,62 @@ fi
 # Include the default user configuration if exists
 [ -r /etc/default/selenium ] && . /etc/default/selenium
 
-pid_file=/var/run/selenium/selenium.pid
-user=selenium
-group=selenium
-servicename=$(basename "$0")
-command="$1"
-binary=/opt/selenium/selenium-server-standalone.jar
-var_dir=/var/log/selenium
-lock_file=/var/lock/subsys/selenium.lock
+PIDFILE=/var/run/selenium/selenium.pid
+PKGNAME=selenium 
 
-usage="usage: $servicename {start|stop|restart|status}"
-lsb_init_functions="/lib/lsb/init-functions"
+# Source function library.
+. /etc/init.d/functions
+
+RETVAL=0;
 
 if [ -z "${RUN_AT_STARTUP}" -o "${RUN_AT_STARTUP}" != "YES" ]; then                                                                                      
-    log_warning_msg "Not starting $servicename, edit /etc/default/$servicename to start it."
-    exit 1
+    log_warning_msg "Not starting $PKGNAME, edit /etc/default/$PKGNAME to start it."
+    exit ${RETVAL}
 fi
 
-# Check source function library
-if [ ! -r $lsb_init_functions ]; then
-    echo "$servicename: not able to read $lsb_init_functions: script cannot run" 1>&2
-    exit 1
-fi
-
-# Load source function library
-. $lsb_init_functions
-
-# Check arguments (only one parameter)
-if [ $# -ne 1 ]; then
-    log_failure_msg "$servicename: action not specified or too many arguments"
-    log_warning_msg $usage
-    exit 2
-fi
-
-# Check if we can find the binary.
-if [ ! -L $binary ]; then
-    if [ $command = "stop" ] ; then
-        log_warning_msg "$servicename: binary $binary not found: $command request ignored"
-        exit 0
-    else
-        log_failure_msg "$servicename: binary $binary not found: $command request failed"
-        exit 5
-    fi
-fi
-
-
-service_start() {
-
+start() {
     PROFILE_FIREFOX=""
-
     if [ -n "${SELENIUM_FFPROFILE}" ]; then
         PROFILE_FIREFOX=" -firefoxProfileTemplate ${SELENIUM_FFPROFILE} "
     fi
-
-    if [ -f $pid_file ]; then
-        rm -f $pid_file
-    fi
-
-    su -s /bin/bash - ${SELENIUM_USER} -c "DISPLAY=${X_DISPLAY} nohup ${JAVA_BIN} -jar ${SELENIUM_LIB} -port ${SELENIUM_PORT} ${SELENIUM} -browserTimeout ${SELENIUM_BROWSER_TIMEOUT} ${PROFILE_FIREFOX} >${SELENIUM_LOGDIR}/selenium.log 2>${SELENIUM_LOGDIR}/selenium_err.log & echo \$! > $pid_file"
-
-    if [ $? -ne 0 ]; then
-       log_failure_msg "$servicename $command: failed."
-       exit 1
-    fi
-
-    touch $lock_file;       
+    echo "Starting Selenium service"
+    su -s /bin/bash - ${SELENIUM_USER} -c "DISPLAY=${X_DISPLAY} nohup ${JAVA_BIN} -jar ${SELENIUM_LIB} -port ${SELENIUM_PORT} -browserTimeout ${SELENIUM_BROWSER_TIMEOUT} ${PROFILE_FIREFOX} >${SELENIUM_LOGDIR}/selenium.log 2>${SELENIUM_LOGDIR}/selenium_err.log & echo \$! >${PIDFILE}"
+    RETVAL=$?
+    echo
+    [ "${RETVAL}" = 0 ] && touch /var/lock/subsys/selenium
+    return ${RETVAL}
 }
 
-service_stop() {
-    if [ -f $pid_file ]; then
-       PID=$(cat $pid_file)
-    fi
-    if [ ${PID} > 0 ]; then
-        kill -TERM ${PID}
-        rm -f $lock_file $pid_file
-    else
-       log_warning_msg "$servicename not running."
-    fi
+stop() {
+    echo "Stopping Selenium service"
+    PID=`cat ${PIDFILE}`
+    kill -TERM ${PID}
+    rm -f "${PIDFILE}"
+    RETVAL=$?
+    echo
+    [ "${RETVAL}" = 0 ] && rm -f /var/lock/subsys/selenium
+    return ${RETVAL}
 }
 
-
-service_restart() {
-    service_stop
-    service_start
+restart() {
+    stop
+    start
 }
 
-service_status() {
-
-    PROC=$(ps aux | grep [s]elenium | wc -l)
-
-    if [ -f $pid_file -a ${PROC} -lt 1 ]; then
-        log_failure_msg "$servicename $command: $binary dead with existing pid file: $pid_file"
-        exit 2
-    fi
-
-    if [ -f $pid_file -a ${PROC} -gt 1 ]; then 
-        log_success_msg "$servicename is running"
-        exit 0
-    else        
-    log_failure_msg "$servicename $command: not running"
-    exit 3
-    fi
-}
-
-case $command in
+case "$1" in
     start)
-        service_start
+        start
         ;;
     stop)
-        service_stop
+        stop
         ;;
     restart)
-        service_restart
+        restart
         ;;
     status)
-        service_status
+        status -p ${PIDFILE} selenium
         ;;
     *)
         echo "Usage: /etc/init.d/selenium {start|stop|restart|status}"
         exit 1
 esac
-
-log_success_msg "$servicename $command: done"
-exit 0

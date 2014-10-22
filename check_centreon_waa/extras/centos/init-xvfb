@@ -14,102 +14,66 @@
 [ -r /etc/default/xvfb ] && . /etc/default/xvfb
 
 XVFB_OUTPUT=/tmp/Xvfb.out 
+PIDFILE=/var/run/xvfb.pid
 
+XVFB=/usr/bin/Xvfb 
 XVFB_OPTIONS="${X_SERVER_NUMBER} -nolisten tcp -fbdir ${FBDIR}" 
-servicename=$(basename "$0")
-binary=/usr/bin/Xvfb
-lock_file=/var/lock/subsys/xvfb
-usage="usage: $servicename {start|stop|restart|status}"
-lsb_init_functions="/lib/lsb/init-functions"
-pid_file=/var/run/xvfb.pid
-command="$1"
 
-if [ ! -r $lsb_init_functions ]; then
-    echo "$servicename: not able to read $lsb_init_functions: script cannot run" 1>&2
-    exit 1
-fi
 
-. $lsb_init_functions
+# Source function library. 
+. /etc/init.d/functions 
 
-if [ $# -ne 1 ]; then
-    log_failure_msg "$servicename: action not specified or too many arguments"
-    log_warning_msg $usage
-    exit 2
-fi
-
-if [ ! -e $binary ]; then
-    if [ $command = "stop" ] ; then
-        log_warning_msg "$servicename: binary $binary not found: $command request ignored"
-        exit 0
-    else
-        log_failure_msg "$servicename: binary $binary not found: $command request failed"
-        exit 5
-    fi
-fi
-
-service_start() { 
-    $binary $XVFB_OPTIONS >> $XVFB_OUTPUT 2>&1&
-    if [ $? -ne 0 ]; then
-       log_failure_msg "$servicename $command: failed."
-       exit 1
-    else
-        PID=$!
-        RETVAL=$?
-        echo ${PID} > $pid_file
-        touch $lock_file;
-    fi
+start() { 
+    echo -n "Starting : X Virtual Frame Buffer " 
+    $XVFB $XVFB_OPTIONS >>$XVFB_OUTPUT 2>&1& 
+    PID=$!
+    RETVAL=$? 
+    echo ${PID} > ${PIDFILE}
+    echo 
+    return $RETVAL 
 } 
 
-service_stop() { 
-    if [ -f $pid_file ]; then
-       PID=$(cat $pid_file)
-    fi
-    if [ ${PID} > 0 ]; then
-        kill -TERM ${PID}
-        rm -f $lock_file $pid_file
-    else
-       log_warning_msg "$servicename not running."
-    fi
+stop() { 
+    echo -n "Shutting down : X Virtual Frame Buffer" 
+    PID=`cat ${PIDFILE}`
+    kill -TERM ${PID} &>/dev/null
+    rm -f ${PIDFILE}
+    echo 
+    return 0 
 } 
 
-service_status() {
-    PROC=$(ps aux | grep [X]vfb | wc -l)
-    if [ -f $pid_file -a ${PROC} -lt 1 ]; then
-        log_failure_msg "$servicename $command: $binary dead with existing pid file: $pid_file"
-        exit 2
+status() {
+    if [ ! -e ${PIDFILE} ]; then
+        echo "Xvfb is not running"
+        return 1
     fi
-
-    if [ -f $pid_file ]; then
-        log_success_msg "$servicename is running"
-        exit 0
-    else
-    log_failure_msg "$servicename $command: not running"
-    exit 3
+    PID=`cat ${PIDFILE}`
+    PIDRUN=`ps -eaf | awk '{ print $2 }' | grep "^${PID}$"`
+    if [ -z "${PIDRUN}" ]; then
+        echo "Xvfb is not running"
+        return 1
     fi
+    echo "Xvfb is running"
 }
 
 
-
-case $command in 
+case "$1" in 
   start) 
-    service_start 
+    start 
     ;; 
   stop) 
-    service_stop 
+    stop 
     ;; 
   restart)
-    service_stop
-    service_start
+    stop
+    start
     ;;
   status)
-    service_status
+    status
     ;;
   *) 
-    echo "Usage: xvfb {start|stop|restart|status}" 
+    echo "Usage: xvfb {start|stop}" 
     exit 1 
     ;; 
 esac 
-
-log_success_msg "$servicename $command: done"
-exit 0
-
+exit $?
