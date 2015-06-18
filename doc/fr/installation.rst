@@ -13,7 +13,12 @@ Si vous utilisez les dépôts Centreon Enterprise Server, utiliser la commande s
 
      yum install centreon-selenium-server
 
+Pour démarer les services Selenium et xorg-x11-server-Xvfb exécutez les commandes suivantes ::
 
+	 /etc/init.d/selenium start
+	 /etc/init.d/xvfb start
+
+	 
 Sonde de supervision
 --------------------
 

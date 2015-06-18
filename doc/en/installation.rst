@@ -13,7 +13,12 @@ If you are using Centreon Enterprise Server. Type the following command to insta
 
      yum install centreon-selenium-server
 
+To start Selenium and xorg-x11-server-Xvfb services use the following commands ::
 
+	 /etc/init.d/selenium start
+	 /etc/init.d/xvfb start
+	 
+	
 Centreon Selenium Plugin
 ------------------------
 
