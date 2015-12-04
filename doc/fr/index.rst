@@ -1,11 +1,13 @@
-Welcome to Centreon Web Application Analytics documentation!
-============================================================
+Bienvenue dans la documentation de Centreon Web Application Analytics !
+=======================================================================
 
+Centreon Web Application Analytics est un projet Open source sous licence GPL v2.
 
-Centreon Web Application Analytics is an OpenSource Nagios plugin under GPL license.
-This plugin is used to check a website with user experience. It is based on the product `Selenium <http://seleniumhq.org>`_.
+Cette sonde est utilisée pour contrôler la disponibilité d'un site web au 
+travers du ressenti utilisateur en exécutant un scrénario.
+Ce projet utilise le produit `Selenium <http://seleniumhq.org>`_.
 
-Contents:
+Sommaire :
 
 .. toctree::
    :maxdepth: 2
