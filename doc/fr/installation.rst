@@ -1,16 +1,31 @@
 Installation
 ============
 
+Prérequis
+~~~~~~~~~
+
+.. note::
+    Centreon recommande l'installation du serveur Selenium sur un collecteur
+    dédié à la supervision des scénarios web et non sur un collecteur de 
+    supervision déjà existant car la charge d'exécution des scénarios web
+    impactera fortement la supervision des hôtes et des services.
+
+Prérequis physiques du serveur :
+
+* 6 vCPU à 3 GHz
+* 8 GO de RAM
+* au minimum 30 GO d'espace disque
+
+Prérequis logiciels :
+
+* Firefox en version 4 minimum ou Iceweasel 27.0.1
+* Selenium en version 2.40
+
 Depuis les paquets
 ~~~~~~~~~~~~~~~~~~
 
 Serveur Selenium
 ----------------
-
-.. warning::
-    Le serveur peut être un installé sur un de vos **collecteurs supervision**. 
-    Cependant, si vous souhaitez mettre en oeuvre des scenarios nombreux et complexes, 
-    il est recommandé d'utiliser un **serveur dédié**.
 
 Si vous utilisez les dépôts CES, utilisez la commande suivante pour installer votre serveur :: 
 
@@ -20,7 +35,6 @@ Pour démarrer les services Selenium et xorg-x11-server-Xvfb exécutez les comma
 
 	 /etc/init.d/selenium start
 	 /etc/init.d/xvfb start
-
 	 
 Sonde de supervision
 --------------------
