@@ -7,13 +7,16 @@ Depuis les paquets
 Serveur Selenium
 ----------------
 
-Le serveur peut être un installé sur un de vos **satellites de supervision**. Cependant, si vous souhaitez mettre en oeuvre des scenarios nombreux et complexes, il est recommandé d'utiliser un **serveur dédié**.
+.. warning::
+    Le serveur peut être un installé sur un de vos **collecteurs supervision**. 
+    Cependant, si vous souhaitez mettre en oeuvre des scenarios nombreux et complexes, 
+    il est recommandé d'utiliser un **serveur dédié**.
 
-Si vous utilisez les dépôts Centreon Enterprise Server, utiliser la commande suivante pour installer votre serveur :: 
+Si vous utilisez les dépôts CES, utilisez la commande suivante pour installer votre serveur :: 
 
      yum install centreon-selenium-server
 
-Pour démarer les services Selenium et xorg-x11-server-Xvfb exécutez les commandes suivantes ::
+Pour démarrer les services Selenium et xorg-x11-server-Xvfb exécutez les commandes suivantes ::
 
 	 /etc/init.d/selenium start
 	 /etc/init.d/xvfb start
@@ -22,38 +25,42 @@ Pour démarer les services Selenium et xorg-x11-server-Xvfb exécutez les comman
 Sonde de supervision
 --------------------
 
-Si vous bénéficier de l'offre **Plugins Packs**, vous pouvez installer facilement la sonde de supervision et les modèles d'hôtes et services associés via les commandes suivantes ::   
+Si vous bénéficiez de l'offre **Plugins Packs**, vous pouvez installer facilement 
+la sonde de supervision et les modèles d'hôtes et de services associés via les 
+commandes suivantes :
+
+::   
 
      yum install ces-packs-applications-selenium
      yum install ces-plugins-applications-selenim
 
 .. note:: 
-
-   Si vous n'avez pas accès aux plugins packs, l'installation du plugin peut être réalisée en suivante la procédure décrite dans la partie "Depuis les sources".
+    Si vous n'avez pas accès aux **Plugins Packs**, l'installation du plugin peut être réalisée 
+    en suivante la procédure décrite dans la partie :ref:`Depuis les sources<fromsources>`.
     
+.. _fromsources:
 
 Depuis les sources
 ~~~~~~~~~~~~~~~~~~
 
-Pré-requis 
-----------
+Prérequis 
+---------
 
 * Un environnement de bureau avec Firefox 4 ou plus récent
-* Un serveur avec selenium et firefox d'installé
-* Un serveur de supervision avec Centreon-engine ou Nagios.
+* Un serveur avec Selenium et Firefox d'installé
+* Un serveur de supervision avec Centreon Engine.
 * Un clone du git du projet http://git.centreon.com/centreon-web-applications-analytics
-
 
 Installation de l'outil de scénario
 -----------------------------------
 
 Cette partie concerne le déploiement de l'IDE Selenium afin de réaliser vos scénarios.
 
-Installation:
+Installation :
 
 * Lancer Firefox
-* Telécharger Selenium `Selenium download page <http://seleniumhq.org/download/>`
-* Dans la section **Selenium IDE**, telécharger la dernière version
+* Télécharger `Selenium depuis la page du projet<http://seleniumhq.org/download/>`
+* Dans la section **Selenium IDE**, télécharger la dernière version
 * Redémarrer Firefox
 
 Vous avez désormais accès au Selenium IDE via le menu "Outils".
@@ -61,18 +68,17 @@ Vous avez désormais accès au Selenium IDE via le menu "Outils".
 Installation du serveur Selenium
 --------------------------------
 
-Ce serveur habrite l'outil Selenium RC qui permet d'automatiser l'execution de vos scénarios dans Firefox. 
+Ce serveur abrite l'outil Selenium RC qui permet d'automatiser l'exécution de vos 
+scénarios dans Firefox. 
 
 .. warning::
-   
-   Vérifier la compatibilité de Selenium avec votre version de Firefox `Changelog <https://selenium.googlecode.com/svn/trunk/java/CHANGELOG>`_.
-
-   Par exemple, si vous utilisez une version de Firefox =< 10, vous devez utilisez une version de Selenium <= 2.20.0
+    Vérifier la compatibilité de Selenium avec votre version de Firefox `Changelog <https://selenium.googlecode.com/svn/trunk/java/CHANGELOG>`_.
+    Par exemple, si vous utilisez une version de Firefox =< 10, vous devez utiliser une version de Selenium <= 2.20.0
 
 Installation de Java
 --------------------
 
-La version Java minimum est 1.6. (validé avec la 1.7)
+La version Java minimum est la v1.6. (validée avec la v1.7)
 
 Sur Debian::
 
@@ -83,14 +89,14 @@ Sur CentOS/RHEL::
   # yum install java-1.6.0-openjdk
 
 
-Pour les autres OS, reporter vous au `site officiel de java <http://www.java.com>` et télécharger le JRE correspondant.
+Pour les autres OS, reporter-vous au `site officiel de java <http://www.java.com>` et télécharger le JRE correspondant.
 
 Installation du serveur X virtuel
 ---------------------------------
 
-Le serveur Selenium doit lancer un navigateur dpour executer ses scénarios, un serveur X doit donc être installé.
+Le serveur Selenium doit lancer un navigateur pour exécuter ses scénarios, un serveur X doit donc être installé.
 
-Pour une installation plus légère, nous utiliser Xvfb.
+Pour une installation plus légère, utilisez Xvfb.
 
 Sur Debian::
 
@@ -100,9 +106,10 @@ Sur CentOS/RHEL::
 
   # yum install xorg-x11-server-Xvfb
 
-Pour lancer le serveur au démarrage, un script est disponible sur le git.
+Pour lancer le serveur X au démarrage, un script est disponible sur le git.
 
-Pour l'installer, copier le init-xvfb dans le repertoire /etc/init.d et le fichier default-xvfb dans /etc/default
+Pour l'installer, copiez le init-xvfb dans le répertoire **/etc/init.d** et le 
+fichier **default-xvfb** dans **/etc/default**
 
 Pour activer son lancement :
 
@@ -143,7 +150,9 @@ Le serveur Selenium est une archive JAR téléchargeable depuis cette `page <htt
 
 Copier l'archive dans un répertoire et créer un lien symbolique (facultatif, facilite une éventuelle mise à jour).
 
-Exemple::
+Exemple :
+
+::
 
   # mkdir /opt/selenium
   # cd /opt/selenium
@@ -178,18 +187,18 @@ Les variables de configuration sont les suivantes :
 * **SELENIUM_PORT** : Port d'écoute du serveur Selenium
 * **SELENIUM_LOGDIR** : Répertoire des logs
 * **SELENIUM_PID** : Chemin vers le fichier PID
-* **SELENIUM_FFPROFILE** : Profil firefox a utiliser lors de l'exécution de vos scénarios
+* **SELENIUM_FFPROFILE** : Profil Firefox à utiliser lors de l'exécution de vos scénarios
 * **X_DISPLAY** : Le port X Display
 
 Sonde Centreon WAA
 ~~~~~~~~~~~~~~~~~~
 
-Le plugin doit être installé sur un de vos **serveurs de supervision** (central or poller).
+Le plugin doit être installé sur un de vos **collecteurs de supervision** (serveur Central ou collecteur distant).
 
-Pré-requis Perl
----------------
+Prérequis Perl
+--------------
 
-Liste des librairies nécessaires:
+Liste des librairies nécessaires :
 
 * Getopt::Long
 * Time::HiRes
@@ -204,27 +213,28 @@ Sur CentOS/RHEL ::
 
   # yum install perl-Test-WWW-Selenium perl-XML-XPath
 
-Pour une installation via CPAN (non-recommandé!)::
+Pour une installation via CPAN (**non-recommandé!**)::
 
   # cpan -i Getopt::Long Time::HiRes XML::XPath WWW::Selenium
 
-Plugin tree
------------
+Installation de la sonde
+------------------------
 
-To install the check, please clone the centreon-plugins 3.0 git and copy needed files.
+Pour installer la sonde, il est nécessaire de récupérer le projet Centreon Plugins.
 
-  # cd /usr/local/src
+::
+
+  # cd /tmp
   # git clone http://git.centreon.com/centreon-plugins.git 
   # mv centreon-plugins/* /usr/lib/nagios/plugins/
-
-
 
 Scenario directory
 ------------------
 
-Le plugin utilise des scénarios Sélénium au format HTML, ces scénarios doivent être copiés en local sur le serveur de supervision exécutant le plugin::
+Le plugin utilise des scénarios Sélénium au format HTML, ces scénarios doivent 
+être copiés en local sur le serveur de supervision exécutant la sonde :
+
+::
 
   # mkdir /var/lib/centreon_waa
-  # chown centreon-engine. /var/lib/centreon_waa
-
-
+  # chown centreon-engine:centreon-engine /var/lib/centreon_waa
