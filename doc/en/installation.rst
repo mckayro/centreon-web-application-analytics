@@ -11,26 +11,23 @@ This server could be installed on a **monitoring poller**. If you plan to deploy
 
 If you are using Centreon Enterprise Server. Type the following command to install Selenium-server and all the dependencies needed ::
 
-     yum install centreon-selenium-server
+  # yum install centreon-selenium-server
 
 To start Selenium and xorg-x11-server-Xvfb services use the following commands ::
 
-	 /etc/init.d/selenium start
-	 /etc/init.d/xvfb start
-	 
+  # /etc/init.d/selenium start
+  # /etc/init.d/xvfb start
 	
 Centreon Selenium Plugin
 ------------------------
 
 If you are using Centreon Enterprise Server with plugins-pack repository. Type the following commands to install check_centreon_waa and associated host/service templates ::
 
-     yum install ces-packs-applications-selenium
-     yum install ces-plugins-applications-selenim
+  # yum install ces-packs-applications-selenium
+  # yum install ces-plugins-applications-selenim
 
 .. note:: 
-
-   If you do not have the plugin-packs licence, please follow installation steps described above in the "From sources > 
-    
+    If you do not have the plugin-packs license, please follow installation steps described above in the "From sources > 
 
 From sources
 ~~~~~~~~~~~~
@@ -64,9 +61,7 @@ Selenium server installation
 This server runs the Selenium RC server which drives the Firefox browser.
 
 .. warning::
-
    You must verify the compatibility between Firefox and Selenium server. This information is in Selenium server `Changelog <https://selenium.googlecode.com/svn/trunk/java/CHANGELOG>`_.
-
    For example, if you have Firefox 10 or below, you must use Selenium server version 2.20.0 or below.
 
 Java installation
@@ -209,9 +204,9 @@ Plugin tree
 
 The check is check_centreon_waa, you must copy this file into the Nagios plugin directory::
 
-  # cp check_centreon_waa /usr/lib/nagios/plugins/
-  # chown nagios: /usr/lib/nagios/plugins/check_centreon_waa
-  # chmod a+x /usr/lib/nagios/plugins/check_centreon_waa
+  # cd /tmp
+  # git clone http://git.centreon.com/centreon-plugins.git
+  # mv centreon-plugins/* /usr/lib/nagios/plugins/
 
 Scenario directory
 ------------------
@@ -219,6 +214,4 @@ Scenario directory
 This check uses a Selenium scenario in HTML format, these scenarios are copied into a directory::
 
   # mkdir /var/lib/centreon_waa
-  # chown nagios: /var/lib/centreon_waa
-
-
+  # chown centreon-engine:centreon-engine: /var/lib/centreon_waa

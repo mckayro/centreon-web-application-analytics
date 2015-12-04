@@ -4,7 +4,9 @@ Check configuration
 This part describes the configuration of the Centreon Web.
 
 .. note::
-   If you use plugin-packs and have installed ces-packs-applications-selenium and ces-plugins-applications-selenium, please ignore theses steps. You can directly use App-Selenium-WAA host template and check "Create service linked to template".
+    If you use plugin-packs and have installed ces-packs-applications-selenium 
+    and ces-plugins-applications-selenium, please ignore these steps. You can 
+    directly use App-Selenium-WAA host template and check "Create service linked to template".
 
 Command configuration
 ~~~~~~~~~~~~~~~~~~~~~
@@ -25,8 +27,8 @@ Service template configuration
 
 To facilitate the service configuration, we configure a service template.
 
-The service template is configured in the **Configuration => Services => Templates**
-To add a new service template, click on the **Add** link.
+The service template is configured in the **Configuration => Services => Templates*
+to add a new service template, click on the **Add** link.
 
 We complete the form with the following information:
 
@@ -35,7 +37,7 @@ We complete the form with the following information:
 * Template Service Model : generic-service
 * Check Command : App-Selenium-Scenario
 
-Define the following macros :
+Define the following macros:
 
 * SCENARIONAME = @NAMEOFTHETEST@
 * TIMEOUT = @CENTENGINETIMEOUT@
@@ -49,13 +51,13 @@ Host configuration
 
 Add a new Host through **Configuration => Hosts => Add**.
 
-Specify hostname, alias, IP address and select **generic-host** template. You must define following macros :
+Specify hostname, alias, IP address and select **generic-host** template. You must define following macros:
 
 * SCENARIODIR = /var/lib/centreon_waa  [Local directory containing scenario]
 * SELENIUMHOST = 192.168.1.1 [Set the IP Address of your Selenium server]
 * SELENIUMPORT = 4444 [Change according to your configuration]
 
-You can create an host template if you want, as in the screenshot below : 
+You can create a host template if you want, as in the screenshot below: 
 
 .. image:: _static/images/waa_configuration_03_HTPL.png
 
@@ -63,7 +65,7 @@ Service configuration
 ~~~~~~~~~~~~~~~~~~~~~
 
 The service is configured in the "Configuration > Services > Service by hosts"
-To add a new service, click on the **Add** link.
+to add a new service, click on the **Add** link.
 
 We complete the form with the following information:
 
