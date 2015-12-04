@@ -1,6 +1,25 @@
 Installation
 ============
 
+Prerequisites
+~~~~~~~~~~~~~
+
+.. note::
+    Centreon advises to install the Selenium server on a dedicated poller for
+    web scenarios monitoring and not on an existing monitoring poller. This
+    allows to do not impact monitoring of hosts and services.
+
+Physical prerequisites for the server:
+
+* 6 vCPU à 3 GHz
+* 8 GO de RAM
+* au minimum 30 GO d'espace disque
+
+Software prerequisites:
+
+* Firefox en version 4 minimum ou Iceweasel 27.0.1
+* Selenium en version 2.40
+
 From packages
 ~~~~~~~~~~~~~
 
