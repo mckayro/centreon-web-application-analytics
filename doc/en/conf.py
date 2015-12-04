@@ -47,7 +47,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Centreon Web Application Analitycs'
-copyright = u'2012, Merethis'
+copyright = u'2015, CENTREON'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -192,8 +192,8 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'CentreonBroker.tex', u'Centreon Broker Documentation',
-   u'Merethis', 'manual'),
+  ('index', 'CentreonWAA.tex', u'Centreon Web Application Analytics Documentation',
+   u'Centreon', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -222,8 +222,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'centreonbroker', u'Centreon Broker Documentation',
-     [u'Merethis'], 1)
+    ('index', 'centreonwaa', u'Centreon Web Application Analytics Documentation',
+     [u'Centreon'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -236,8 +236,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'CentreonBroker', u'Centreon Broker Documentation',
-   u'Merethis', 'CentreonBroker', 'One line description of project.',
+  ('index', 'CentreonWAA', u'Centreon Web Application Analytics Documentation',
+   u'Centreon', 'CentreonWAA', 'One line description of project.',
    'Miscellaneous'),
 ]
 
