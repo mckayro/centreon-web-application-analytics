@@ -1,5 +1,9 @@
 check_centreon_waa - Changelog
 
+1.1.0 - 2015/12/28
+------------------
+* Add error feedback by handling echo command #5861
+
 1.0.3 - 2012/09/06
 ------------------
 * Fix init scripts for LSB #3234, #3328, #3621

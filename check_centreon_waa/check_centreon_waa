@@ -155,12 +155,12 @@ my $status = 1;
 my $action = undef;
 my $filter = undef;
 my $value = undef;
+my $last_echo_msg = undef;
 
 my $step = 0;
 my $stepOk = 0;
 
 $sel->start;
-
 my $start = [ Time::HiRes::gettimeofday( ) ];
 foreach my $actionNode ($listActionNode->get_nodelist) {
   if ($status) {
@@ -177,6 +177,11 @@ foreach my $actionNode ($listActionNode->get_nodelist) {
       }
       sleep($sleepTime / 1000);
       $stepOk += 1;
+    # It's an echo command => do not send it to Selenium server
+    # and store the associated string so that it can be displayed
+    # in case of a failure as an info message
+    } elsif (trim($action->string_value) eq 'echo') {
+      $last_echo_msg = trim($filter->string_value);
     } else {
       $tmpOk = 1;
       if ($debug) {
@@ -205,7 +210,12 @@ my $output = "CHECKWEB ";
 
 if ($status == 0) {
   $retcode = 2;
-  $output .= "CRITICAL";
+  my $last_cmd = trim($action->string_value) . ' ' . trim($filter->string_value) . ' ' . trim($value->string_value);
+  if (defined($last_echo_msg)) {
+    $output .= "CRITICAL - $last_cmd - $last_echo_msg";
+  } else {
+    $output .= "CRITICAL - " . $last_cmd;
+  }
 } elsif ($end > $critical) {
   $retcode = 2;
   $output .= "CRITICAL";
