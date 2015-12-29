@@ -29,13 +29,16 @@ Serveur Selenium
 
 Si vous utilisez les dépôts CES, utilisez la commande suivante pour installer votre serveur :: 
 
-     yum install centreon-selenium-server
+  # yum install centreon-selenium-server
 
 Pour démarrer les services Selenium et xorg-x11-server-Xvfb exécutez les commandes suivantes ::
 
-	 /etc/init.d/selenium start
-	 /etc/init.d/xvfb start
-	 
+  # /etc/init.d/xvfb start
+  # chkconfig --add xfvb
+  # chkconfig --level 2345 xfvb on
+  # /etc/init.d/selenium start
+  # chkconfig --add selenium
+  # chkconfig --level 2345 selenium on
 Sonde de supervision
 --------------------
 
@@ -45,8 +48,8 @@ commandes suivantes :
 
 ::   
 
-     yum install ces-packs-applications-selenium
-     yum install ces-plugins-applications-selenim
+  # yum install ces-packs-applications-selenium
+  # yum install ces-plugins-applications-selenium
 
 .. note:: 
     Si vous n'avez pas accès aux **Plugins Packs**, l'installation du plugin peut être réalisée 

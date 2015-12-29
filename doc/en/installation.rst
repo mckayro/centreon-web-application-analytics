@@ -34,8 +34,12 @@ If you are using Centreon Enterprise Server. Type the following command to insta
 
 To start Selenium and xorg-x11-server-Xvfb services use the following commands ::
 
-  # /etc/init.d/selenium start
   # /etc/init.d/xvfb start
+  # chkconfig --add xfvb
+  # chkconfig --level 2345 xfvb on
+  # /etc/init.d/selenium start
+  # chkconfig --add selenium
+  # chkconfig --level 2345 selenium on
 	
 Centreon Selenium Plugin
 ------------------------
@@ -43,7 +47,7 @@ Centreon Selenium Plugin
 If you are using Centreon Enterprise Server with plugins-pack repository. Type the following commands to install check_centreon_waa and associated host/service templates ::
 
   # yum install ces-packs-applications-selenium
-  # yum install ces-plugins-applications-selenim
+  # yum install ces-plugins-applications-selenium
 
 .. note:: 
     If you do not have the plugin-packs license, please follow installation steps described above in the "From sources > 
