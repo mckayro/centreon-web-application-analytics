@@ -182,6 +182,7 @@ foreach my $actionNode ($listActionNode->get_nodelist) {
     # in case of a failure as an info message
     } elsif (trim($action->string_value) eq 'echo') {
       $last_echo_msg = trim($filter->string_value);
+      $stepOk += 1;
     } else {
       $tmpOk = 1;
       if ($debug) {
@@ -211,10 +212,10 @@ my $output = "CHECKWEB ";
 if ($status == 0) {
   $retcode = 2;
   my $last_cmd = trim($action->string_value) . ' ' . trim($filter->string_value) . ' ' . trim($value->string_value);
+  $output .= "CRITICAL - $last_cmd";
+  # Add extra info if scenario provided echo commands
   if (defined($last_echo_msg)) {
-    $output .= "CRITICAL - $last_cmd - $last_echo_msg";
-  } else {
-    $output .= "CRITICAL - " . $last_cmd;
+    $output .= " - " . $last_echo_msg;
   }
 } elsif ($end > $critical) {
   $retcode = 2;
