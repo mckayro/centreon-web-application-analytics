@@ -37,13 +37,13 @@ Fournir des détails en cas d'erreur d'un scénario
 =================================================
 
 Quand un scénario échoue, il n'est pas toujours facile de trouver la cause du problème.
-Les versions plus récentes du plugin affichent la commande selenuim qui a échoué, mais cela n'est pas très lisible.
+Les versions plus récentes du plugin affichent la commande selenium qui a échoué, mais cela n'est pas très lisible.
 
 pour aider à trouver la cause des problèmes, il est possible d'ajouter un texte d'information avant une ou plusieurs commands selenium.
 En cas d'erreur, la sonde va afficher la dernière finroamtion qui a été lue dans le scénario.
 
 Cette fonctionnalité peut être utilisée avec la commande selenium "echo".
-Voici un exemple de scénario qui échoue:
+Voici un exemple de scénario qui échoue :
 
 .. image:: _static/images/ide-no-echo.png
 
@@ -51,7 +51,7 @@ Sans modification du scénario, la sortie de la sonde sera ::
 
 	CHECKWEB CRITICAL - clickAndWait link=Services  - Execution time = 10.689183s Test Ok 5/8 |'time'=10.689183s;50;60 'availability'=62%;;;0;100
 
-Maintenant, nous pouvons ajouter des informations additionnelles dans le scénario:
+Maintenant, nous pouvons ajouter des informations additionnelles dans le scénario :
 
 .. image:: _static/images/ide-no-echo.png
 
@@ -59,4 +59,4 @@ Dans ce cas, la sortie de la sonde devient ::
 
 	CHECKWEB CRITICAL - clickAndWait link=Services  - Ouverture services - Execution time = 10.689183s Test Ok 9/11 |'time'=10.689183s;50;60 'availability'=62%;;;0;100
 
-Remarquer li'affichage du texte supplémentaire "Ouverture services", qui correspond à la commande echo du scénario.
+Remarquer l'affichage du texte supplémentaire "Ouverture services", qui correspond à la commande echo du scénario.
