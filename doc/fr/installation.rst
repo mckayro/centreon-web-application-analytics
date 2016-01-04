@@ -18,8 +18,10 @@ Prérequis physiques du serveur :
 
 Prérequis logiciels :
 
+* Un serveur de supervision avec Centreon Engine.
 * Firefox en version 4 minimum ou Iceweasel 27.0.1
 * Selenium en version 2.40
+* La sonde Selenium des Centreon Plugins (https://github.com/centreon/centreon-plugins/tree/master/apps/selenium)
 
 Depuis les paquets
 ~~~~~~~~~~~~~~~~~~
@@ -39,6 +41,7 @@ Pour démarrer les services Selenium et xorg-x11-server-Xvfb exécutez les comma
   # /etc/init.d/selenium start
   # chkconfig --add selenium
   # chkconfig --level 2345 selenium on
+
 Sonde de supervision
 --------------------
 
@@ -59,14 +62,6 @@ commandes suivantes :
 
 Depuis les sources
 ~~~~~~~~~~~~~~~~~~
-
-Prérequis 
----------
-
-* Un environnement de bureau avec Firefox 4 ou plus récent
-* Un serveur avec Selenium et Firefox d'installé
-* Un serveur de supervision avec Centreon Engine.
-* Un clone du git du projet http://git.centreon.com/centreon-web-applications-analytics
 
 Installation de l'outil de scénario
 -----------------------------------
@@ -248,7 +243,7 @@ Pour installer la sonde, il est nécessaire de récupérer le projet Centreon Pl
 Scenario directory
 ------------------
 
-Le plugin utilise des scénarios Sélénium au format HTML, ces scénarios doivent 
+Le plugin utilise des scénarios Selenium au format HTML, ces scénarios doivent 
 être copiés en local sur le serveur de supervision exécutant la sonde :
 
 ::
