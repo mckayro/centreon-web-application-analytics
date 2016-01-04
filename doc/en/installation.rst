@@ -9,16 +9,17 @@ Prerequisites
     web scenarios monitoring and not on an existing monitoring poller. This
     allows to do not impact monitoring of hosts and services.
 
-Physical prerequisites for the server:
+Hardware requirements for the server:
 
-* 6 vCPU à 3 GHz
-* 8 GO de RAM
-* au minimum 30 GO d'espace disque
+* 6 vCPU 3 GHz
+* 8 Gb RAM
+* a minimum filesystem space of 30 Gb 
 
-Software prerequisites:
+Software requirements:
 
-* Firefox en version 4 minimum ou Iceweasel 27.0.1
-* Selenium en version 2.40
+* A monitoring server with Centreon Engine
+* Firefox minimum version or Iceweasel 27.0.1
+* Selenium version 2.40
 
 From packages
 ~~~~~~~~~~~~~
@@ -44,7 +45,7 @@ To start Selenium and xorg-x11-server-Xvfb services use the following commands :
 Centreon Selenium Plugin
 ------------------------
 
-If you are using Centreon Enterprise Server with plugins-pack repository. Type the following commands to install check_centreon_waa and associated host/service templates ::
+If you are using Centreon Enterprise Server with Plugins Pack repository. Type the following commands to install the plugin and associated host/service templates ::
 
   # yum install ces-packs-applications-selenium
   # yum install ces-plugins-applications-selenium
@@ -55,13 +56,8 @@ If you are using Centreon Enterprise Server with plugins-pack repository. Type t
 From sources
 ~~~~~~~~~~~~
 
-Requirements
-------------
-
-* A desktop with Firefox 4 or above
-* A server with Selenium and Firefox
-* A monitoring server with Centreon Engine or Nagios
-* A clone of the git repository http://git.centreon.com/centreon-web-applications-analytics
+Init scripts and variables files needed for the Selenium server are provided in this repository : https://github.com/centreon/centreon-web-application-analytics
+They are NOT needed when using RPM packaging.
 
 Desktop installation
 --------------------
@@ -117,7 +113,7 @@ On CentOS or CES::
 
   # yum install xorg-x11-server-Xvfb
 
-To start the server on boot, a script is available in the centreon waa source package.
+To start the server on boot, a script is available in the Git.
 To install this script, copy the init-xvfb for your distribution into /etc/init.d and the default-xvfb into /etc/default.
 
 To activate this start options:
@@ -166,7 +162,7 @@ Example::
   # ln -sf selenium-server-standalone-version.jar selenium-server-standalone.jar
 
 To start the server on boot, a script is available in the centreon waa source package.
-To install this script, copy the init-selenium for your distribution into /etc/init.d and the default-selenium into /etc/default.
+To install this script, copy the init-selenium from Git into /etc/init.d and the default-selenium into /etc/default.
 
 To activate this start options:
 
@@ -222,10 +218,12 @@ With CPAN::
 
   # cpan -i Getopt::Long Time::HiRes XML::XPath WWW::Selenium
 
-Plugin tree
------------
+Plugin installation
+-------------------
 
-The check is check_centreon_waa, you must copy this file into the Nagios plugin directory::
+To install the plugin, it is necessary to get Centreon Plugins project.
+
+::
 
   # cd /tmp
   # git clone http://git.centreon.com/centreon-plugins.git

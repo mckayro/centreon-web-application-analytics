@@ -63,6 +63,9 @@ commandes suivantes :
 Depuis les sources
 ~~~~~~~~~~~~~~~~~~
 
+Les scripts de démarrage et fichiers de variables nécessaires au serveur Selenium sont fournis dans ce repository : https://github.com/centreon/centreon-web-application-analytics
+Ils ne sont PAS nécessaires lorsqu'on utilise le paquet RPM.
+
 Installation de l'outil de scénario
 -----------------------------------
 
@@ -118,9 +121,9 @@ Sur CentOS/RHEL::
 
   # yum install xorg-x11-server-Xvfb
 
-Pour lancer le serveur X au démarrage, un script est disponible sur le git.
+Pour lancer le serveur X au démarrage, un script est disponible sur le Git.
 
-Pour l'installer, copiez le init-xvfb dans le répertoire **/etc/init.d** et le 
+Pour l'installer, copiez le init-xvfb idepuis Git dans le répertoire **/etc/init.d** et le 
 fichier **default-xvfb** dans **/etc/default**
 
 Pour activer son lancement :
@@ -173,7 +176,7 @@ Exemple :
 
 Pour lancer le serveur au démarrage, un script est disponible sur le git.
 
-Pour l'installer, copier le init-selenium dans le repertoire /etc/init.d et le fichier default-selenium dans /etc/default
+Pour l'installer, copier le init-selenium depuis Git dans le repertoire /etc/init.d et le fichier default-selenium dans /etc/default
 
 Pour activer son lancement:
 
