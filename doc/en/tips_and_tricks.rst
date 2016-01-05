@@ -21,7 +21,7 @@ In the URL bar type :
 
   about:config
   
-.. image:: _static/images/firefox_profil.png
+.. image:: _static/images/firefox_profil.PNG
   
 Finally, enter set the following parameters to optimze your selenium profile
 
