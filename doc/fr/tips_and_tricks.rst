@@ -27,7 +27,8 @@ Dans la barre d'adresse entrez la ligne suivante :
   
 .. image:: _static/images/firefox_profil.png
 
-Enfin, entrez les paramètre suivants pour alléger au maximum votre profil firefox et ainsi éviter de faux positif dans votre supervision.
+Enfin, entrez les paramètre suivants pour alléger au maximum votre profil firefox et ainsi éviter 
+de faux positif dans votre supervision.
 
 ::
 
