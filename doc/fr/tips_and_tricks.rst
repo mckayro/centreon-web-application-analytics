@@ -17,7 +17,7 @@ Pour cela ouvrez la fenètre Executer puis taper la commande suivante :
 
 Créer un nouveau profil utilisateur puis cliquez sur "Demarrer Firefox" avec cette utilisateur.
 
-.. image:: _static/images/firefox_profil.png
+.. image:: _static/images/firefox_profil.PNG
 
 Dans la barre d'adresse entrez la ligne suivante :
 
@@ -25,7 +25,7 @@ Dans la barre d'adresse entrez la ligne suivante :
 
   about:config
   
-.. image:: _static/images/firefox_profil.png
+.. image:: _static/images/firefox_profil.PNG
 
 Enfin, entrez les paramètre suivants pour alléger au maximum votre profil firefox et ainsi éviter 
 de faux positif dans votre supervision.
