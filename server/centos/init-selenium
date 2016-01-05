@@ -50,7 +50,7 @@ if [ $# -ne 1 ]; then
 fi
 
 # Check if we can find the binary.
-if [ ! -L $binary ]; then
+if [ ! -e $binary ]; then
     if [ $command = "stop" ] ; then
         log_warning_msg "$servicename: binary $binary not found: $command request ignored"
         exit 0
