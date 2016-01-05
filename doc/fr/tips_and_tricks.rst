@@ -25,7 +25,7 @@ Dans la barre d'adresse entrez la ligne suivante :
 
   about:config
   
-.. image:: _static/images/firefox_profil.PNG
+.. image:: _static/images/about_config.PNG
 
 Enfin, entrez les paramètre suivants pour alléger au maximum votre profil firefox et ainsi éviter 
 de faux positif dans votre supervision.
