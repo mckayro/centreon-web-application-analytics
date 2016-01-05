@@ -16,9 +16,6 @@ Pour cela ouvrez la fenètre Executer puis taper la commande suivante :
   firfox -p
 
 Créer un nouveau profil utilisateur puis cliquez sur "Demarrer Firefox" avec cette utilisateur.
-
-.. image:: _static/images/firefox_profil.PNG
-
 Dans la barre d'adresse entrez la ligne suivante :
 
 :: 

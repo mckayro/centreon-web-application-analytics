@@ -15,11 +15,13 @@ To optimize your firefox profile for Selenium. Open the "Run" windows and enter 
   firefox -p
   
 Create a new user profile and start Firefox with this new user.
-In the URL bar type
+In the URL bar type :
 
 ::
 
-  about::config
+  about:config
+  
+.. image:: _static/images/firefox_profil.png
   
 Finally, enter set the following parameters to optimze your selenium profile
 
