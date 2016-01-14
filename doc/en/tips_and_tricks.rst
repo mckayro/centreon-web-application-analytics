@@ -6,8 +6,39 @@ How to create a firefox profile
 ===============================
 
 Use your firefox for create a profile. Add your information into this profile 
-(add proxy configuration, add-ons...). When the configuration is finished, you 
-must copy the profile into a directory in Selenium server. You must remove cache 
+(add proxy configuration, add-ons...). 
+
+To optimize your firefox profile for Selenium. Open the "Run" windows and enter the following command
+
+::
+
+  firefox -p
+  
+Create a new user profile and start Firefox with this new user.
+In the URL bar type :
+
+::
+
+  about:config
+  
+.. image:: _static/images/about_config.PNG
+  
+Finally, enter set the following parameters to optimze your selenium profile
+
+::
+  
+  browser.cache.disk.capacity = 0
+  browser.cache.disk.enable = false
+  browser.cache.disk.smart_size.enabled = false
+  browser.cache.memory.enable = false
+  browser.cache.offline.enable = false
+  app.update.auto = false
+  app.update.enabled = false
+  app.update.silent = false
+
+  
+When the configuration is finished, you must copy the profile into a directory 
+in Selenium server. You must remove cache 
 directory from profile directory and verify the size of this profile.
 If the profile if to large, it can cause some perfomance issues. For finish the 
 configuration, you must modify the default script of Selenium for change the 
