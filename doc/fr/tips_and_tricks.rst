@@ -9,6 +9,35 @@ Utilisez Firefox pour créer un profil, cela peut être utile si vous utilisez
 un proxy, des add-ons, ou si vous souhaitez vous authentifier sur des sites 
 avec des authentifications particulières (NTLM notamment).
 
+Pour cela ouvrez la fenètre Executer puis taper la commande suivante :
+
+::
+
+  firfox -p
+
+Créer un nouveau profil utilisateur puis cliquez sur "Demarrer Firefox" avec cette utilisateur.
+Dans la barre d'adresse entrez la ligne suivante :
+
+:: 
+
+  about:config
+  
+.. image:: _static/images/about_config.PNG
+
+Enfin, entrez les paramètre suivants pour alléger au maximum votre profil firefox et ainsi éviter 
+de faux positif dans votre supervision.
+
+::
+
+  browser.cache.disk.capacity = 0
+  browser.cache.disk.enable = false
+  browser.cache.disk.smart_size.enabled = false
+  browser.cache.memory.enable = false
+  browser.cache.offline.enable = false
+  app.update.auto = false
+  app.update.enabled = false
+  app.update.silent = false
+
 Lorsque votre profil est terminé, copiez le dans le répertoire **/etc/default/selenium**
 de votre serveur Selenium. Pour que celui-ci soit pris en compte, videz le cache et 
 spécifiez le chemin d'accès au profil dans **/etc/default/selenium**.
