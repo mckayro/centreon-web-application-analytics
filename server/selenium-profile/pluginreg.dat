@@ -1,179 +1,92 @@
 Generated File. Do not edit.
 
 [HEADER]
-Version|0.17|$
-Arch|x86-msvc|$
+Version:0.17:$
+Arch:x86_64-gcc3:$
 
 [PLUGINS]
-nppdf32.dll|$
-C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AIR\nppdf32.dll|$
-15.9.20069.28170|$
-1443646020000|0|0|0|$
-Adobe PDF Plug-In For Firefox and Netscape 15.9.20069|$
-Adobe Acrobat|$
-7
-0|application/pdf|Acrobat Portable Document Format|pdf|$
-1|application/vnd.adobe.pdfxml|Adobe PDF in XML Format|pdfxml|$
-2|application/vnd.adobe.x-mars|Adobe PDF in XML Format|mars|$
-3|application/vnd.fdf|Acrobat Forms Data Format|fdf|$
-4|application/vnd.adobe.xfdf|XML Version of Acrobat Forms Data Format|xfdf|$
-5|application/vnd.adobe.xdp+xml| Acrobat XML Data Package|xdp|$
-6|application/vnd.adobe.xfd+xml|Adobe FormFlow99 Data File|xfd|$
-np-vmware-vmrc.dll|$
-C:\Program Files (x86)\Common Files\VMware\VMware Remote Console Plug-in 5.5\Firefox\np-vmware-vmrc.dll|$
-5.5.0.33711|$
-1402607742000|0|0|0|$
-VMware Remote Console Plug-in|$
-VMware Remote Console Plug-in|$
+librhythmbox-itms-detection-plugin.so:$
+/usr/lib64/mozilla/plugins/librhythmbox-itms-detection-plugin.so:$
+:$
+1289512033000:0:0:0:$
+This plug-in detects the presence of iTunes when opening iTunes Store URLs in a web page with Firefox.:$
+iTunes Application Detector:$
 1
-0|application/x-vmware-remote-console-2012|VMware Remote Console Plug-in||$
-np-vmware-vmrc.dll|$
-C:\Program Files (x86)\Common Files\VMware\VMware Remote Console Plug-in 5.1\Firefox\np-vmware-vmrc.dll|$
-5.1.0.20447|$
-1342197160000|0|0|0|$
-VMware Remote Console Plug-in|$
-VMware Remote Console Plug-in|$
+0:application/itunes-plugin:::$
+npwrapper.so:$
+/usr/lib64/nspluginwrapper/npwrapper.so:$
+:$
+1352816341000:0:0:0:$
+<a href="http://gwenole.beauchesne.info/projects/nspluginwrapper/">nspluginwrapper</a>  is a cross-platform NPAPI plugin viewer, in particular for linux/i386 plugins.<br>This <b>beta</b> software is available under the terms of the GNU General Public License.<br>:$
+NPAPI Plugins Wrapper 1.4.4:$
 1
-0|application/x-vmware-remote-console-2012|VMware Remote Console Plug-in||$
-np-vmware-vmrc.dll|$
-C:\Program Files (x86)\Common Files\VMware\VMware VMRC Plug-in\Firefox\np-vmware-vmrc.dll|$
-4.0.0.10045|$
-1306933082000|0|0|0|$
-VMware Remote Console and Client Integration Plug-in|$
-VMware Remote Console and Client Integration Plug-in|$
+0:unknown/mime-type:Do not open:none:$
+libtotem-narrowspace-plugin.so:$
+/usr/lib64/mozilla/plugins/libtotem-narrowspace-plugin.so:$
+:$
+1385149957000:0:0:0:$
+The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.28.6 plugin handles video and audio streams.:$
+QuickTime Plug-in 7.2.0:$
+5
+0:video/quicktime:QuickTime video:mov:$
+1:video/mp4:MPEG-4 video:mp4:$
+2:image/x-macpaint:MacPaint Bitmap image:pntg:$
+3:image/x-quicktime:Macintosh Quickdraw/PICT drawing:pict, pict1, pict2:$
+4:video/x-m4v:MPEG-4 video:m4v:$
+libtotem-gmp-plugin.so:$
+/usr/lib64/mozilla/plugins/libtotem-gmp-plugin.so:$
+:$
+1385149957000:0:0:0:$
+The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.28.6 plugin handles video and audio streams.:$
+Windows Media Player Plug-in 10 (compatible; Totem):$
+13
+0:application/x-mplayer2:AVI video:avi, wma, wmv:$
+1:video/x-ms-asf-plugin:ASF video:asf, wmv:$
+2:video/x-msvideo:AVI video:asf, wmv:$
+3:video/x-ms-asf:ASF video:asf:$
+4:video/x-ms-wmv:Windows Media video:wmv:$
+5:video/x-wmv:Windows Media video:wmv:$
+6:video/x-ms-wvx:Windows Media video:wmv:$
+7:video/x-ms-wm:Windows Media video:wmv:$
+8:video/x-ms-wmp:Windows Media video:wmv:$
+9:application/x-ms-wms:Windows Media video:wms:$
+10:application/x-ms-wmp:Windows Media video:wmp:$
+11:application/asx:Microsoft ASX playlist:asx:$
+12:audio/x-ms-wma:Windows Media audio:wma:$
+libtotem-mully-plugin.so:$
+/usr/lib64/mozilla/plugins/libtotem-mully-plugin.so:$
+:$
+1385149957000:0:0:0:$
+DivX Web Player version 1.4.0.233:$
+DivX® Web Player:$
 1
-0|application/x-vmware-remote-console-2011|VMware Remote Console and Client Integration Plug-in||$
-npvlc.dll|$
-C:\Program Files (x86)\VideoLAN\VLC\npvlc.dll|$
-2.2.1.0|$
-1428933432000|0|0|0|$
-VLC media player Web Plugin|$
-VLC Web Plugin|$
-44
-0|audio/mpeg|MPEG audio|mp2,mp3,mpga,mpega|$
-1|audio/x-mpeg|MPEG audio|mp2,mp3,mpga,mpega|$
-2|video/mpeg|MPEG video|mpg,mpeg,mpe|$
-3|video/x-mpeg|MPEG video|mpg,mpeg,mpe|$
-4|video/mpeg-system|MPEG video|mpg,mpeg,mpe,vob|$
-5|video/x-mpeg-system|MPEG video|mpg,mpeg,mpe,vob|$
-6|audio/mp4|MPEG-4 audio|aac,mp4,mpg4|$
-7|audio/x-m4a|MPEG-4 audio|m4a|$
-8|video/mp4|MPEG-4 video|mp4,mpg4|$
-9|application/mpeg4-iod|MPEG-4 video|mp4,mpg4|$
-10|application/mpeg4-muxcodetable|MPEG-4 video|mp4,mpg4|$
-11|video/x-m4v|MPEG-4 video|m4v|$
-12|video/x-msvideo|AVI video|avi|$
-13|application/ogg|Ogg stream|ogg|$
-14|video/ogg|Ogg video|ogv|$
-15|application/x-ogg|Ogg stream|ogg|$
-16|application/x-vlc-plugin|VLC plug-in||$
-17|video/x-ms-asf-plugin|Windows Media Video|asf,asx|$
-18|video/x-ms-asf|Windows Media Video|asf,asx|$
-19|application/x-mplayer2|Windows Media||$
-20|video/x-ms-wmv|Windows Media|wmv|$
-21|video/x-ms-wvx|Windows Media Video|wvx|$
-22|audio/x-ms-wma|Windows Media Audio|wma|$
-23|application/x-google-vlc-plugin|Google VLC plug-in||$
-24|audio/wav|WAV audio|wav|$
-25|audio/x-wav|WAV audio|wav|$
-26|audio/3gpp|3GPP audio|3gp,3gpp|$
-27|video/3gpp|3GPP video|3gp,3gpp|$
-28|audio/3gpp2|3GPP2 audio|3g2,3gpp2|$
-29|video/3gpp2|3GPP2 video|3g2,3gpp2|$
-30|video/divx|DivX video|divx|$
-31|video/flv|FLV video|flv|$
-32|video/x-flv|FLV video|flv|$
-33|application/x-matroska|Matroska video|mkv|$
-34|video/x-matroska|Matroska video|mkv|$
-35|audio/x-matroska|Matroska audio|mka|$
-36|application/xspf+xml|Playlist xspf|xspf|$
-37|audio/x-mpegurl|MPEG audio|m3u|$
-38|video/webm|WebM video|webm|$
-39|audio/webm|WebM audio|webm|$
-40|application/vnd.rn-realmedia|Real Media File|rm|$
-41|audio/x-realaudio|Real Media Audio|ra|$
-42|audio/amr|AMR audio|amr|$
-43|audio/x-flac|FLAC audio|flac|$
-npGoogleUpdate3.dll|$
-C:\Program Files (x86)\Google\Update\1.3.29.1\npGoogleUpdate3.dll|$
-1.3.29.1|$
-1449224593029|0|0|0|$
-Google Update|$
-Google Update|$
-2
-0|application/x-vnd.google.update3webcontrol.3|||$
-1|application/x-vnd.google.oneclickctrl.9|||$
-NPSPWRAP.DLL|$
-C:\Program Files\Microsoft Office 15\root\VFS\ProgramFilesX86\Microsoft Office\Office15\NPSPWRAP.DLL|$
-15.0.4514.1000|$
-1441645702655|0|0|0|$
-The plugin allows you to have a better experience with Microsoft SharePoint|$
-Microsoft Office 2013|$
-2
-0|application/x-sharepoint|SharePoint Plug-in for Firefox||$
-1|application/x-sharepoint-uc|||$
-npjp2.dll|$
-C:\Program Files (x86)\Java\jre1.8.0_66\bin\plugin2\npjp2.dll|$
-11.66.2.18|$
-1448653572974|0|0|0|$
-Next Generation Java Plug-in 11.66.2 for Mozilla browsers|$
-Java(TM) Platform SE 8 U66|$
-40
-0|application/x-java-applet|Java Applet||$
-1|application/x-java-bean|JavaBeans||$
-2|application/x-java-vm|||$
-3|application/x-java-applet;version=1.1.1|||$
-4|application/x-java-bean;version=1.1.1|||$
-5|application/x-java-applet;version=1.1|||$
-6|application/x-java-bean;version=1.1|||$
-7|application/x-java-applet;version=1.2|||$
-8|application/x-java-bean;version=1.2|||$
-9|application/x-java-applet;version=1.1.3|||$
-10|application/x-java-bean;version=1.1.3|||$
-11|application/x-java-applet;version=1.1.2|||$
-12|application/x-java-bean;version=1.1.2|||$
-13|application/x-java-applet;version=1.3|||$
-14|application/x-java-bean;version=1.3|||$
-15|application/x-java-applet;version=1.2.2|||$
-16|application/x-java-bean;version=1.2.2|||$
-17|application/x-java-applet;version=1.2.1|||$
-18|application/x-java-bean;version=1.2.1|||$
-19|application/x-java-applet;version=1.3.1|||$
-20|application/x-java-bean;version=1.3.1|||$
-21|application/x-java-applet;version=1.4|||$
-22|application/x-java-bean;version=1.4|||$
-23|application/x-java-applet;version=1.4.1|||$
-24|application/x-java-bean;version=1.4.1|||$
-25|application/x-java-applet;version=1.4.2|||$
-26|application/x-java-bean;version=1.4.2|||$
-27|application/x-java-applet;version=1.5|||$
-28|application/x-java-bean;version=1.5|||$
-29|application/x-java-applet;version=1.6|||$
-30|application/x-java-bean;version=1.6|||$
-31|application/x-java-applet;version=1.7|||$
-32|application/x-java-bean;version=1.7|||$
-33|application/x-java-applet;version=1.8|||$
-34|application/x-java-bean;version=1.8|||$
-35|application/x-java-applet;jpi-version=1.8.0_66|||$
-36|application/x-java-bean;jpi-version=1.8.0_66|||$
-37|application/x-java-vm-npruntime|||$
-38|application/x-java-applet;deploy=11.66.2|||$
-39|application/x-java-applet;javafx=8.0.66|||$
-npdeployJava1.dll|$
-C:\Program Files (x86)\Java\jre1.8.0_66\bin\dtplugin\npdeployJava1.dll|$
-11.66.2.18|$
-1448653571521|0|0|0|$
-NPRuntime Script Plug-in Library for Java(TM) Deploy|$
-Java Deployment Toolkit 8.0.660.18|$
-1
-0|application/java-deployment-toolkit|||$
-npatgpc.dll|$
-C:\Users\fthepaut\AppData\Roaming\Mozilla\plugins\npatgpc.dll|$
-29.1340.2015.721|$
-1442827872661|0|0|0|$
-ActiveTouch General Plugin Container Version 105|$
-ActiveTouch General Plugin Container|$
-1
-0|application/x-atgpc-plugin|General Plugin Container File|gpc|$
+0:video/divx:AVI video:divx:$
+libtotem-cone-plugin.so:$
+/usr/lib64/mozilla/plugins/libtotem-cone-plugin.so:$
+:$
+1385149957000:0:0:0:$
+The <a href="http://www.gnome.org/projects/totem/">Totem</a> 2.28.6 plugin handles video and audio streams.:$
+VLC Multimedia Plugin (compatible Totem 2.28.6):$
+20
+0:application/x-vlc-plugin:VLC Multimedia Plugin::$
+1:application/vlc:VLC Multimedia Plugin::$
+2:video/x-google-vlc-plugin:VLC Multimedia Plugin::$
+3:application/x-ogg:Ogg multimedia file:ogg:$
+4:application/ogg:Ogg multimedia file:ogg:$
+5:audio/ogg:Ogg Audio:oga:$
+6:audio/x-ogg:Ogg Audio:ogg:$
+7:video/ogg:Ogg Video:ogv:$
+8:video/x-ogg:Ogg Video:ogg:$
+9:application/annodex:Annodex exchange format:anx:$
+10:audio/annodex:Annodex Audio:axa:$
+11:video/annodex:Annodex Video:axv:$
+12:video/mpeg:MPEG video:mpg, mpeg, mpe:$
+13:audio/wav:WAV audio:wav:$
+14:audio/x-wav:WAV audio:wav:$
+15:audio/mpeg:MP3 audio:mp3:$
+16:application/x-nsv-vp3-mp3:NullSoft video:nsv:$
+17:video/flv:Flash video:flv:$
+18:application/x-totem-plugin:Totem Multimedia plugin::$
+19:audio/midi:MIDI audio:mid, midi:$
 
 [INVALID]
