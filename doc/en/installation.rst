@@ -7,7 +7,7 @@ Prerequisites
 .. note::
     Centreon advises to install the Selenium server on a dedicated poller for
     web scenarios monitoring and not on an existing monitoring poller. This
-    allows to do not impact monitoring of hosts and services.
+    does not impact monitoring of hosts and services.
 
 Hardware requirements for the server:
 
